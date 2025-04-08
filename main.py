@@ -26,6 +26,13 @@ def cart():
     user = request.headers.get("x-user")
     return {"user": user, "cart": []}
 
+@app.route("/upload/<filename>", methods=["POST","PUT"])
+def upload(filename: str):
+    output_path = os.path.join(os.path.dirname(__file__), filename)
+    f = request.files["the_file"]
+    f.save(output_path)
+    return {"status": "ok", "path": output_path}
+
 if __name__ == "__main__":
     import os
     debug_mode = os.getenv("FLASK_DEBUG", "False").lower() in ("true", "1", "t")
