@@ -21,5 +21,10 @@ def authenticate():
             return {"status": "error", "message": "invalid username"}
     return {"status": "error", "message": "invalid authentication request"}
 
+@app.route("/cart", methods=["GET"])
+def cart():
+    user = request.headers.get("x-user")
+    return {"user": user, "cart": []}
+
 if __name__ == "__main__":
     app.run(debug=True)
