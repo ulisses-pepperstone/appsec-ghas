@@ -1,12 +1,10 @@
-name: "Python Lingint"
+name: "Python Linting"
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  schedule:
-    - cron: '10 2 * * 4'
 
 jobs:
   lint:
